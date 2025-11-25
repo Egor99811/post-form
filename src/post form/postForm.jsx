@@ -7,7 +7,7 @@ export function PostForm() {
     const submit = (e) => {
         e.preventDefault();
         document.getElementById('textArea').disabled = true;
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             let randomNumber = Math.floor(Math.random() * 10) + 1;
             if(randomNumber <= 3){
                 const messageBox = document.getElementById('message-box');
@@ -23,6 +23,7 @@ export function PostForm() {
                 document.getElementById('message-box').innerText = 'Пост опубликован'
             }               
         }, 1500);
+        return () => clearTimeout(timer);
     }
 
     const reset = () => {
